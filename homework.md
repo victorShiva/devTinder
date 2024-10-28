@@ -1,4 +1,8 @@
 - what is node_modules , package.json , package-lock.json?
+- what is difference between package.json and package-lock.json?
 - what is dependencies?
 - what is the use of "-g" .
 - difference between caret and tilde (^ vs ~);
+- Play with routes and route extension ex. /hello , / , /hello/2 , /test.
+- Order of routes matter a lot.
+- write logic to handle GET , POST , DELETE , PATCH API calls and test them on postman.
