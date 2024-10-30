@@ -2,29 +2,24 @@ const express = require('express');
 
 const app = express();
 
-//app.get('/ab?c', (req, res) => {
-//    res.send({
-//        userName: "Raghava",
-//        password: 845678
-//    })
-//});
-
-//app.get(/^\/a$/, (req, res) => {
-//    res.send({
-//        userName: "Aman",
-//        password: "jhgt789"
-//    })
-//});
-
-app.get(/^\/user\/:id?\/[0-9]+$/, (req, res) => {
-    console.log(req.params);
-    res.send({
-        userName: "danish",
-        password: "dan@23"
-    })
-});
-
-
+app.use('/user',
+    (req, res, next) => {
+        console.log('Handling user1 !!');
+        //res.send("1st Response !!");
+        next();
+        //res.send("1st Response !!");
+    },
+    (req, res, next) => {
+        console.log('Handling user2 !!');
+        next()
+        res.send("2st Response !!");
+    },
+    (req, res, next) => {
+        console.log('Handling user3 !!');
+        //res.send("3st Response !!");
+        next();
+    }
+)
 
 
 app.listen(4000, () => {
