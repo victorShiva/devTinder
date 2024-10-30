@@ -2,38 +2,30 @@ const express = require('express');
 
 const app = express();
 
-app.use("/user", (req, res) => {
-    res.send("HA HAHAAHA AHAHAHAHA");
-})
+//app.get('/ab?c', (req, res) => {
+//    res.send({
+//        userName: "Raghava",
+//        password: 845678
+//    })
+//});
 
-//this route will match only handle GET call to user 
-app.get("/user", (req, res) => {
+//app.get(/^\/a$/, (req, res) => {
+//    res.send({
+//        userName: "Aman",
+//        password: "jhgt789"
+//    })
+//});
+
+app.get(/^\/user\/:id?\/[0-9]+$/, (req, res) => {
+    console.log(req.params);
     res.send({
-        firstName: "Raghav",
-        age: 22
+        userName: "danish",
+        password: "dan@23"
     })
 });
 
-//post
-app.post("/user", (req, res) => {
-    //saving data to DB
-    res.send("Data successfully saved to the database!")
-});
 
-//patch
-app.patch("/user", (req, res) => {
-    res.send(" Updated Successfully! ");
-})
 
-//DELETE
-app.delete("/user", (req, res) => {
-    res.send("Delete Successfully!");
-})
-
-//this route match all the HTTP method API call to /home 
-app.use('/home', (req, res) => {
-    res.send("Welcme to user2 home page!");
-});
 
 app.listen(4000, () => {
     console.log("server is running at port 4000");
