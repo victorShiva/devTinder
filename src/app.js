@@ -1,30 +1,23 @@
 const express = require('express');
 
 const app = express();
-const { userAuth, loggedUser } = require("./middlewares/auth")
+const { userAuth, loggedUser } = require("./middlewares/auth");
 
-app.use("/user", userAuth);
 
-app.get("/user", (req, res) => {
-    res.send("User Authenticated");
+app.get("/getUserData", (req, res) => {
+    try {
+        // Logic of DB call and get user getuserData
+        throw new Error("qwefgh");
+        res.send("User Data send!!")
+    } catch (err) {
+        res.status(500).send('Some Error occur Please Contact Help support team!!');
+    }
+
+
 })
 
-app.get("/user/profile", (req, res) => {
-    res.send("Get The User Pofile Here!");
-})
-
-app.get("/user/contact", (req, res) => {
-    res.send("Find The User Contact List !!");
-})
-
-app.get("/product", (req, res) => {
-    console.log('/product route');
-    res.send("Find Godarage Almond Oil!!");
-})
-
-app.get("/product/order", loggedUser, (req, res) => {
-    console.log("/product/order route");
-    res.send("Product is successfully Placed!!");
+app.use('/', (err, req, res, next) => {
+    res.send("Something went wrong!!")
 })
 
 app.listen(4000, () => {
